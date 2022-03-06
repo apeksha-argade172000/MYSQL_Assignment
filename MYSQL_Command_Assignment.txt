@@ -1,4 +1,4 @@
-Q.1- Write a MYSQL query to create a table employees including columns Emp_ID,Emp_FirstName,Emp_LastName,Emp_Age,Location,Joining_Date,DeptID,DeptName,Designation,Emp_Salary,Email,PhoneNo with primary key constraint 
+Q.1- Write a MYSQL query to create a table employees including columns Emp_ID,Emp_FirstName,Emp_LastName,Emp_Age,Location,Joining_Date,DeptID,DeptName,Designation,Emp_Salary,Email,PhoneNo with primary key constraint.
 
 C:\Users\hp\OneDrive\Desktop>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -proot
 mysql: [Warning] Using a password on the command line interface can be insecure.

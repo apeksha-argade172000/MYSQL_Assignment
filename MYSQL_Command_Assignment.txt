@@ -1,0 +1,255 @@
+Q.1- Write a MYSQL query to create a table employees including columns Emp_ID,Emp_FirstName,Emp_LastName,Emp_Age,Location,Joining_Date,DeptID,DeptName,Designation,Emp_Salary,Email,PhoneNo with primary key constraint 
+
+C:\Users\hp\OneDrive\Desktop>"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -proot
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 30
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| a                  |
+| apeksha            |
+| bcsstudent         |
+| cityshopdb         |
+| dumpdb             |
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| rtoofficeproject   |
+| sakila             |
+| student            |
+| sys                |
+| world              |
++--------------------+
+14 rows in set (0.01 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| employee_details   |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> describe employee_details;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Emp_ID        | int         | NO   | PRI | NULL    |       |
+| Emp_FirstName | varchar(30) | NO   |     | NULL    |       |
+| Emp_LastName  | varchar(30) | NO   |     | NULL    |       |
+| Emp_Age       | int         | NO   |     | NULL    |       |
+| Location      | varchar(30) | NO   |     | NULL    |       |
+| Joining_Date  | date        | NO   |     | NULL    |       |
+| DeptID        | int         | NO   |     | NULL    |       |
+| DeptName      | varchar(30) | NO   |     | NULL    |       |
+| Designation   | varchar(30) | NO   |     | NULL    |       |
+| Emp_Salary    | int         | NO   |     | NULL    |       |
+| Email         | varchar(30) | NO   |     | NULL    |       |
+| PhoneNo       | varchar(15) | NO   |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+12 rows in set (0.01 sec)
+
+mysql> insert into employee_details values(100,'Rajveer','Singh',25,'Mumbai','2018-06-17',10,'Engineering','Head Engineering',50000,'rajveer@email.com',7868766676);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(101,'Ankit','Jain',27,'Pune','2018-01-31',20,'Purchase','Manager',24000,'ankit@email.com',9734738473);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(102,'Ram','Prasad',24,'Delhi','2017-11-05',30,'Marketing','Marketing Manager',37000,'ram@email.com',9878967890);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(103,'Ruchi','Gupta',22,'Hyderabad','2017-1-06',40,'Training','General Manager',44000,'ruchi@email.com',9971967746);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(104,'Dilip','Sharma',28,'Bangalore','2018-02-18',50,'Software Engineer','Engineering',50000,'dilip@email.com',7766554433);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(105,'Vijay','Kumar',23,'Kolkata','2015-07-03',60,'Maintenance','Company Driver',7000,'vijay@email.com',9334534545);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(106,'Sanjay','Rai',24,'Delhi','2022-03-05',70,'Sales','Sales Manager',30000,'sanjay@email.com',9810098100);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employee_details values(107,'Raman','Khanna',25,'Jaipur','2021-08-11',80,'Human Resources','HR Manager',10000,'raman@email.com',8890987890);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(108,'Akash','Shah',28,'Gurgaon','2017-04-27',90,'Finance','Manager',45000,'akash@email.com',9167091745);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(109,'Sakshi','Yadav',29,'Kolhpur','2020-10-18',100,'Training','Senior Manager',15000,'sakshi@email.com',9922555896);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee_details values(110,'Mahesh','Pawar',26,'Nashik','2017-11-05',110,'Administration','Asstt.General Manager',20000,'mahesh@email.com',8765343211);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from employee_details;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email             | PhoneNo    |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+|    100 | Rajveer       | Singh        |      25 | Mumbai    | 2018-06-17   |     10 | Engineering       | Head Engineering      |      50000 | rajveer@email.com | 7868766676 |
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com   | 9734738473 |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com     | 9878967890 |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com   | 9971967746 |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com   | 7766554433 |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com   | 9334534545 |
+|    106 | Sanjay        | Rai          |      24 | Delhi     | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com  | 9810098100 |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com   | 8890987890 |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com   | 9167091745 |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com  | 9922555896 |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com  | 8765343211 |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+11 rows in set (0.00 sec)
+
+mysql> select * from employee_details where Emp_Salary=50000;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+------------------+------------+-------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation      | Emp_Salary | Email             | PhoneNo    |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+------------------+------------+-------------------+------------+
+|    100 | Rajveer       | Singh        |      25 | Mumbai    | 2018-06-17   |     10 | Engineering       | Head Engineering |      50000 | rajveer@email.com | 7868766676 |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering      |      50000 | dilip@email.com   | 7766554433 |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+------------------+------------+-------------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from employee_details where Emp_Salary<=20000;
++--------+---------------+--------------+---------+----------+--------------+--------+-----------------+-----------------------+------------+------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location | Joining_Date | DeptID | DeptName        | Designation           | Emp_Salary | Email            | PhoneNo    |
++--------+---------------+--------------+---------+----------+--------------+--------+-----------------+-----------------------+------------+------------------+------------+
+|    105 | Vijay         | Kumar        |      23 | Kolkata  | 2015-07-03   |     60 | Maintenance     | Company Driver        |       7000 | vijay@email.com  | 9334534545 |
+|    107 | Raman         | Khanna       |      25 | Jaipur   | 2021-08-11   |     80 | Human Resources | HR Manager            |      10000 | raman@email.com  | 8890987890 |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur  | 2020-10-18   |    100 | Training        | Senior Manager        |      15000 | sakshi@email.com | 9922555896 |
+|    110 | Mahesh        | Pawar        |      26 | Nashik   | 2017-11-05   |    110 | Administration  | Asstt.General Manager |      20000 | mahesh@email.com | 8765343211 |
++--------+---------------+--------------+---------+----------+--------------+--------+-----------------+-----------------------+------------+------------------+------------+
+4 rows in set (0.00 sec)
+
+mysql> update employee_details set Location='Goa' where Emp_ID=106;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee_details;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email             | PhoneNo    |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+|    100 | Rajveer       | Singh        |      25 | Mumbai    | 2018-06-17   |     10 | Engineering       | Head Engineering      |      50000 | rajveer@email.com | 7868766676 |
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com   | 9734738473 |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com     | 9878967890 |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com   | 9971967746 |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com   | 7766554433 |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com   | 9334534545 |
+|    106 | Sanjay        | Rai          |      24 | Goa       | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com  | 9810098100 |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com   | 8890987890 |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com   | 9167091745 |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com  | 9922555896 |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com  | 8765343211 |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+11 rows in set (0.00 sec)
+
+mysql> create table emp as select * from employee_details;
+Query OK, 11 rows affected (0.18 sec)
+Records: 11  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email             | PhoneNo    |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+|    100 | Rajveer       | Singh        |      25 | Mumbai    | 2018-06-17   |     10 | Engineering       | Head Engineering      |      50000 | rajveer@email.com | 7868766676 |
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com   | 9734738473 |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com     | 9878967890 |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com   | 9971967746 |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com   | 7766554433 |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com   | 9334534545 |
+|    106 | Sanjay        | Rai          |      24 | Goa       | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com  | 9810098100 |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com   | 8890987890 |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com   | 9167091745 |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com  | 9922555896 |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com  | 8765343211 |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+-------------------+------------+
+11 rows in set (0.00 sec)
+
+mysql> delete from emp where Emp_ID=100;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email            | PhoneNo    |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com  | 9734738473 |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com    | 9878967890 |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com  | 9971967746 |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com  | 7766554433 |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com  | 9334534545 |
+|    106 | Sanjay        | Rai          |      24 | Goa       | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com | 9810098100 |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com  | 8890987890 |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com  | 9167091745 |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com | 9922555896 |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com | 8765343211 |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp add Gender varchar(30);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+--------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email            | PhoneNo    | Gender |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+--------+
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com  | 9734738473 | NULL   |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com    | 9878967890 | NULL   |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com  | 9971967746 | NULL   |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com  | 7766554433 | NULL   |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com  | 9334534545 | NULL   |
+|    106 | Sanjay        | Rai          |      24 | Goa       | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com | 9810098100 | NULL   |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com  | 8890987890 | NULL   |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com  | 9167091745 | NULL   |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com | 9922555896 | NULL   |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com | 8765343211 | NULL   |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+--------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp rename column Gender to Emp_Gender;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+------------+
+| Emp_ID | Emp_FirstName | Emp_LastName | Emp_Age | Location  | Joining_Date | DeptID | DeptName          | Designation           | Emp_Salary | Email            | PhoneNo    | Emp_Gender |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+------------+
+|    101 | Ankit         | Jain         |      27 | Pune      | 2018-01-31   |     20 | Purchase          | Manager               |      24000 | ankit@email.com  | 9734738473 | NULL       |
+|    102 | Ram           | Prasad       |      24 | Delhi     | 2017-11-05   |     30 | Marketing         | Marketing Manager     |      37000 | ram@email.com    | 9878967890 | NULL       |
+|    103 | Ruchi         | Gupta        |      22 | Hyderabad | 2017-01-06   |     40 | Training          | General Manager       |      44000 | ruchi@email.com  | 9971967746 | NULL       |
+|    104 | Dilip         | Sharma       |      28 | Bangalore | 2018-02-18   |     50 | Software Engineer | Engineering           |      50000 | dilip@email.com  | 7766554433 | NULL       |
+|    105 | Vijay         | Kumar        |      23 | Kolkata   | 2015-07-03   |     60 | Maintenance       | Company Driver        |       7000 | vijay@email.com  | 9334534545 | NULL       |
+|    106 | Sanjay        | Rai          |      24 | Goa       | 2022-03-05   |     70 | Sales             | Sales Manager         |      30000 | sanjay@email.com | 9810098100 | NULL       |
+|    107 | Raman         | Khanna       |      25 | Jaipur    | 2021-08-11   |     80 | Human Resources   | HR Manager            |      10000 | raman@email.com  | 8890987890 | NULL       |
+|    108 | Akash         | Shah         |      28 | Gurgaon   | 2017-04-27   |     90 | Finance           | Manager               |      45000 | akash@email.com  | 9167091745 | NULL       |
+|    109 | Sakshi        | Yadav        |      29 | Kolhpur   | 2020-10-18   |    100 | Training          | Senior Manager        |      15000 | sakshi@email.com | 9922555896 | NULL       |
+|    110 | Mahesh        | Pawar        |      26 | Nashik    | 2017-11-05   |    110 | Administration    | Asstt.General Manager |      20000 | mahesh@email.com | 8765343211 | NULL       |
++--------+---------------+--------------+---------+-----------+--------------+--------+-------------------+-----------------------+------------+------------------+------------+------------+
+10 rows in set (0.00 sec)
+
+mysql> truncate table emp;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select * from emp;
+Empty set (0.01 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from emp;
+ERROR 1146 (42S02): Table 'employee.emp' doesn't exist
+mysql>
